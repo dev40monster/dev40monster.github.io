@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devansh Jain - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        nav {
+            background: white;
+            padding: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav button:hover,
+        nav button.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .page {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .contact-card strong {
+            color: #667eea;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .skill-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid #667eea;
+        }
+        
+        .skill-section h3 {
+            margin-top: 0;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .project-title {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-stack {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .edu-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .edu-title {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .social-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .exp-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .exp-title {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .exp-org {
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+            }
+            
+            nav button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .page {
+                padding: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><button class="nav-btn active" onclick="showPage('home')">Home</button></li>
+                <li><button class="nav-btn" onclick="showPage('about')">About</button></li>
+                <li><button class="nav-btn" onclick="showPage('skills')">Skills</button></li>
+                <li><button class="nav-btn" onclick="showPage('projects')">Projects</button></li>
+                <li><button class="nav-btn" onclick="showPage('experience')">Experience</button></li>
+                <li><button class="nav-btn" onclick="showPage('education')">Education</button></li>
+                <li><button class="nav-btn" onclick="showPage('contact')">Contact</button></li>
+            </ul>
+        </nav>
+
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <h1>Devansh Jain</h1>
+            <p class="subtitle">CSE Student | LLM Orchestration Expert | Full-stack Developer</p>
+            <p style="font-size: 1.1rem; margin: 2rem 0;">
+                Passionate about building RAG-based systems and high-performance asynchronous backends. 
+                Currently studying at KIIT with expertise in AI integration and modern web technologies.
+            </p>
+            <div class="social-links">
+                <a href="mailto:djain4054@gmail.com" class="social-btn">📧 Email</a>
+                <a href="https://github.com/dev40monster" class="social-btn">🐙 GitHub</a>
+                <a href="https://www.linkedin.com/in/devansh-jain-2909511ab/" class="social-btn">💼 LinkedIn</a>
+            </div>
+            <div style="margin-top: 3rem; text-align: center;">
+                <button class="social-btn" onclick="showPage('about')">Learn More →</button>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <h1>About Me</h1>
+            <p style="font-size: 1.1rem; margin: 1.5rem 0;">
+                I'm a Computer Science student at KIIT with a strong passion for building intelligent systems using 
+                Large Language Models and modern web technologies. My expertise spans from RAG-based systems that 
+                minimize hallucinations to high-performance asynchronous backends serving 150+ users.
+            </p>
+            
+            <h2>Key Highlights</h2>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li><strong>150+ users</strong> deployed on AI-Powered Travel Itinerary platform</li>
+                <li><strong>0.94 faithfulness score</strong> achieved in RAG system grounded answer generation</li>
+                <li><strong>98.5% cache hit rate</strong> with Redis optimization</li>
+                <li><strong>94% ATS compliance success</strong> in resume tailoring</li>
+                <li><strong>95% QA approval rate</strong> across 6 sprint cycles</li>
+                <li><strong>320ms latency</strong> reduction using SSE and LPU inference</li>
+            </ul>
+
+            <h2>Location & Languages</h2>
+            <div class="contact-card">
+                <strong>📍 Location:</strong> New Delhi, India<br>
+                <strong>🗣️ Languages:</strong> English, Hindi<br>
+                <strong>🎓 Current:</strong> CSE Student at KIIT (Aug 2022 - Apr 2026)
+            </div>
+        </div>
+
+        <!-- Skills Page -->
+        <div id="skills" class="page">
+            <h1>Technical Skills</h1>
+            
+            <div class="skills-grid">
+                <div class="skill-section">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <h3>Web & Frontend</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">TailwindCSS</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <h3>Backend & Databases</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Qdrant</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <h3>AI & LLM</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Google Gemini</span>
+                        <span class="skill-tag">Llama-3.1</span>
+                        <span class="skill-tag">RAG Systems</span>
+                        <span class="skill-tag">Groq LPU</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <h3>Data Science</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Recharts</span>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <h3>Tools & DevOps</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Agile/Scrum</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Page -->
+        <div id="projects" class="page">
+            <h1>Featured Projects</h1>
+
+            <div class="project-card">
+                <div class="project-title">🚀 AI-Powered Travel Itinerary Planner</div>
+                <div class="tech-stack">Next.js, React, Tailwind CSS, Gemini AI, REST API</div>
+                <p>
+                    <strong>Impact:</strong> Spearheaded an AI-driven platform deployed to 150+ users, 
+                    cutting travel planning time by 50% through dynamic itinerary algorithms.
+                </p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Led Agile Scrum methodology across 6 sprint cycles</li>
+                    <li>Maintained 95% QA approval rate throughout pilot testing</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">🧠 V.E.R.S.E. (Vector Enhanced Reasoning & Semantic Engine)</div>
+                <div class="tech-stack">Node.js, Redis, Qdrant, Gemini, Jina Embeddings</div>
+                <p>
+                    <strong>Achievement:</strong> Architected a Retrieval-Augmented Generation (RAG) system 
+                    that mitigated LLM hallucinations with 0.94 faithfulness score.
+                </p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Implemented asynchronous ingestion pipeline using Jina Embeddings</li>
+                    <li>Optimized session management with Redis (98.5% cache hit rate)</li>
+                    <li>Deployed NewsBot for real-time news synthesis</li>
+                    <li>Deployed Galileo for citation-grade research analysis</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">📄 AI Resume Automator</div>
+                <div class="tech-stack">FastAPI, React, Groq Llama-3.1, BeautifulSoup, PyMuPDF</div>
+                <p>
+                    <strong>Features:</strong> Context-aware framework for real-time resume tailoring 
+                    with 94% ATS compliance success rate.
+                </p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Reduced perceived latency from 8s to 320ms with SSE and Groq LPU inference</li>
+                    <li>Engineered dual-extraction pipeline with 100% uptime</li>
+                    <li>Integrated Recharts for visual ATS readiness breakdown</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Experience Page -->
+        <div id="experience" class="page">
+            <h1>Experience & Co-Curriculars</h1>
+
+            <h2>Volunteer Roles</h2>
+
+            <div class="exp-card">
+                <div class="exp-title">General Volunteer and Coordinator</div>
+                <div class="exp-org">National Service Scheme (NSS) KIIT</div>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Collaborated with team members to achieve organizational goals</li>
+                    <li>Organized Happiness Concert - major community engagement event</li>
+                    <li>Led NSS Recruitment drive</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-title">General Volunteer and HR Executive</div>
+                <div class="exp-org">Animal Environment Welfare Society (AEWS) KIIT</div>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Handled lead generation and operational tasks</li>
+                    <li>Contributed to ideation for future society events</li>
+                </ul>
+            </div>
+
+            <h2>Awards & Activities</h2>
+            <div class="exp-card">
+                <ul style="margin-left: 2rem;">
+                    <li><strong>Bits n Bytes</strong> - 2nd Position (2020)</li>
+                    <li><strong>XMUN WHO</strong> - Commendable Delegate (2021)</li>
+                    <li><strong>G20 Youth20 Consultation</strong> - Delegate (2023)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education Page -->
+        <div id="education" class="page">
+            <h1>Education</h1>
+
+            <div class="edu-card">
+                <div class="edu-title">Bachelor of Technology in Computer Science and Engineering</div>
+                <div class="exp-org">Kalinga Institute of Industrial Technology (KIIT)</div>
+                <p style="margin-top: 0.5rem;">
+                    <strong>Duration:</strong> Aug 2022 - Apr 2026<br>
+                    <strong>Cumulative GPA:</strong> 8.48 (up to 7th semester)<br>
+                    <strong>Specialization:</strong> Computer Science
+                </p>
+            </div>
+
+            <div class="edu-card">
+                <div class="edu-title">Senior Secondary in Non-Medical Sciences</div>
+                <div class="exp-org">St. Xavier's Senior Secondary School, Delhi</div>
+                <p style="margin-top: 0.5rem;">
+                    <strong>Duration:</strong> Apr 2020 - June 2022<br>
+                    <strong>Percentage:</strong> 89.4%
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <h1>Get In Touch</h1>
+            <p style="font-size: 1.1rem; margin: 2rem 0;">
+                I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
+            </p>
+
+                <div class="contact-card">
+                    <strong>📧 Email</strong><br>
+                    <a href="mailto:djain4054@gmail.com" style="color: #667eea; text-decoration: none;">
+                        djain4054@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <strong>📍 Location</strong><br>
+                    New Delhi, India
+                </div>
+            </div>
+
+            <h2>Social Profiles</h2>
+            <div class="social-links">
+                <a href="https://github.com/dev40monster" class="social-btn">🐙 GitHub</a>
+                <a href="https://www.linkedin.com/in/devansh-jain-2909511ab/" class="social-btn">💼 LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
